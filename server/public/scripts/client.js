@@ -6,10 +6,19 @@ $(document).ready(function(){
     addClickHandlers();
 });
 
-function renderList(){
-    console.log('In renderList');
+function getList(){
+    console.log('In getList');
     //AJAX GET
-}; //end renderList
+    $.ajax({
+        type : 'GET',
+        url : '/tasks'
+    }).then(function (response){
+        console.log('GET from server successful');
+        renderList(response);
+    }).catch(function (error){
+        alert('Error GETting data from server!', error);
+    });
+}; //end getList
 
 function addClickHandlers(){
     console.log('In addClickHandlers');
@@ -20,3 +29,12 @@ function handleSubmit(){
     console.log('in handleSubmit');
     //AJAX POST with data from input field on DOM
 }; //end handleSubmit
+
+function renderList(tasks){
+    console.log('In renderList', tasks);
+    $('#taskList').empty();
+
+    //for(let task of tasks){
+    //    console.log('In render loop logic');
+    //} //end for of
+}; //end renderList
