@@ -8,8 +8,16 @@ const pool = require('../modules/pool');
 //GET
 router.get('/', (req, res) => {
     console.log('GET');
-    
-    res.sendStatus(500);
+
+    const queryText = `SELECT * FROM "todo";`;
+
+    pool.query(queryText).then(result => {
+        res.send(result.rows);
+    }).catch(error => {
+        console.log('PG Error on GET', error);
+        res.sendStatus(500);
+    });
+
 });
 
 //POST
