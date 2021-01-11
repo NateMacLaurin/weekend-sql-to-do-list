@@ -56,8 +56,10 @@ function renderList(tasks){
     for(let task of tasks){
         console.log('In render loop logic');
         $('#taskList').append(`
-            <td>${task.task}</td>
-            <td>${task.completed}</td>
+            <tr id="${task.id}">
+                <td>${task.task}</td>
+                <td>${task.completed}</td>
+            </tr>
         `);
     } //end for of
 }; //end renderList
