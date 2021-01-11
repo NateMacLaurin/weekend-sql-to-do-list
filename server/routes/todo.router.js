@@ -52,7 +52,24 @@ router.delete('/:id', (req, res) => {
         res.sendStatus(500);
     });
 });
+
 //PUT
+router.put('/:id',  (req, res) => {
+    let id = req.params.id;
+    let checkState = req.body.isChecked;
+
+    const queryText = `UPDATE "todo"
+                      SET "completed" = $2
+                      WHERE "id" = $1`;
+  
+    pool.query(queryText, [id, checkState]).then(result => {
+      console.log('PUT');
+      res.sendStatus(204);
+    }).catch(error =>{
+      console.log(`Error putting checkbox update on database`, error);
+      res.sendStatus(500);
+    });
+});
 
 //NPM export
 module.exports = router;

@@ -24,6 +24,7 @@ function addClickHandlers(){
     console.log('In addClickHandlers');
     $('#addTaskButton').on('click', handleSubmit);
     $('#taskList').on('click', '.delBtn', handleDelete);
+    $('#taskList').on('click', '.chkDone', handleChecked);
 }; //end addClickHandlers
 
 function handleSubmit(){
@@ -66,7 +67,21 @@ function handleDelete(){
 } //end handleDelete
 
 function handleChecked(){
+    const id = $(this).closest('tr').attr('id');
+    let status = $(this).prop('checked');
+    console.log('handleChecked', id, status);
+
     //ajax PUT
+    $.ajax({
+        type : 'PUT',
+        url : `/tasks/${id}`,
+        data : {isChecked : status}
+      }).then(function (response){
+            console.log('updated');
+            getList();
+        }).catch(function (error){
+            alert('error updating checked data in database');
+    });
 }; //end handleChecked
 
 function renderList(tasks){
