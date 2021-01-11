@@ -38,7 +38,20 @@ router.post('/',  (req, res) => {
   });
 
 //DELETE
+router.delete('/:id', (req, res) => {
+    let id = req.params.id;
+    console.log('DELETE -', id);
+    const queryText = `DELETE FROM "todo" WHERE "id" = $1;`;
 
+    pool.query(queryText, [id])
+    .then(result => {
+        console.log('Deleted successfully');
+        res.sendStatus(204);
+    }).catch(error => {
+        console.log('Error deleting a task', error);
+        res.sendStatus(500);
+    });
+});
 //PUT
 
 //NPM export

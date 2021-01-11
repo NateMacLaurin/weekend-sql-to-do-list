@@ -23,6 +23,7 @@ function getList(){
 function addClickHandlers(){
     console.log('In addClickHandlers');
     $('#addTaskButton').on('click', handleSubmit);
+    $('#taskList').on('click', '.delBtn', handleDelete);
 }; //end addClickHandlers
 
 function handleSubmit(){
@@ -49,17 +50,41 @@ function addTask(task){
     });
 }; //end addTask
 
+function handleDelete(){
+    const id = $(this).closest('tr').attr('id');
+    console.log('in handleDelete', id);
+
+    $.ajax({
+        type : 'DELETE',
+        url : `/tasks/${id}`
+    }).then(function (response){
+        console.log('Deleted');
+        getList();
+    }).catch(function (error){
+        alert('error deleting book');
+    });
+} //end handleDelete
+
+function handleChecked(){
+    //ajax PUT
+}; //end handleChecked
+
 function renderList(tasks){
     console.log('In renderList', tasks);
     $('#taskList').empty();
 
+    let $tr;
     for(let task of tasks){
         console.log('In render loop logic');
-        $('#taskList').append(`
-            <tr id="${task.id}">
-                <td>${task.task}</td>
-                <td>${task.completed}</td>
-            </tr>
-        `);
+        $tr = $(`<tr id=${task.id}></tr>`);
+        $tr.append(`<td>${task.task}</td>`);
+        if(task.completed){
+            $tr.append(`<td>Complete!</td>`);
+        } else {
+            $tr.append(`<td>Not Yet!</td>`);
+        }
+        $tr.append(`<input type="checkbox" class="chkDone"></input>`);
+        $tr.append(`<input type="button" class="delBtn">DELETE</input>`);
+        $('#taskList').append($tr);
     } //end for of
 }; //end renderList
