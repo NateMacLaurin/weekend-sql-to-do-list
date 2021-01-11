@@ -100,7 +100,7 @@ function renderList(tasks){
             $tr.append(`<td>Not Yet!</td>`);
             $tr.append(`<input type="checkbox" class="chkDone"></input>`);
         }
-        $tr.append(`<input type="button" class="delBtn">DELETE</input>`);
+        $tr.append(`<button type="button" class="delBtn">DELETE</button>`);
         $('#taskList').append($tr);
     } //end for of
 }; //end renderList
