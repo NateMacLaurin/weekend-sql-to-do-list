@@ -26,9 +26,28 @@ function addClickHandlers(){
 }; //end addClickHandlers
 
 function handleSubmit(){
-    console.log('in handleSubmit');
-    //AJAX POST with data from input field on DOM
+    console.log('Add Task button clicked.');
+    let task = {
+        task : $('#taskInput').val()
+    };
+    addTask(task);
 }; //end handleSubmit
+
+function addTask(task){
+    console.log('in addTask', task);
+    //AJAX POST with data from input field on DOM
+    $.ajax({
+        type : 'POST',
+        url : '/tasks',
+        data: task
+    }).then(function(response){
+        console.log('POST successful.');
+        getList();
+    }).catch(function(error){
+        console.log('Error in post');
+        alert('Unable to add task.');
+    });
+}; //end addTask
 
 function renderList(tasks){
     console.log('In renderList', tasks);
