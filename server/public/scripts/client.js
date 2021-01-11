@@ -2,7 +2,7 @@
 
 $(document).ready(function(){
     console.log('JQ Sourced.');
-    renderList();
+    getList();
     addClickHandlers();
 });
 
@@ -34,7 +34,11 @@ function renderList(tasks){
     console.log('In renderList', tasks);
     $('#taskList').empty();
 
-    //for(let task of tasks){
-    //    console.log('In render loop logic');
-    //} //end for of
+    for(let task of tasks){
+        console.log('In render loop logic');
+        $('#taskList').append(`
+            <td>${task.task}</td>
+            <td>${task.completed}</td>
+        `);
+    } //end for of
 }; //end renderList
