@@ -3,13 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To Do List</title>
+    <title>Nate's ToDo List App</title>
     <script type="text/javascript" src="vendors/jquery-3.5.1.min.js"></script>
     <script type="text/javascript" src="scripts/client.js"></script>
     <link rel="stylesheet" href="vendors/bootstrap.min.css"/>
     <link rel="stylesheet" href="css/styles.css"/>
 </head>
 <body>
-    
+    <header>
+        <h1>Nate's ToDo List App</h1>
+    </header>
+    <main>
+        <section>
+            <h3>Add New Task</h3>
+            <label for="taskInput">Task:</label>
+            <input type="text" id="taskInput" minlength=1 maxlength=250 title size="100">
+            <button type="button" id="addTaskButton">Add To List</button>
+        </section>
+        <section>
+            <div>
+                <h3>Task List</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Task</th>
+                            <th>Completed?</th>
+                        </tr>
+                    </thead>
+                    <tbody id="taskList">
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
 </body>
+<footer>
+    <h5>Created By Nate MacLaurin</h5>
+</footer>
 </html>
