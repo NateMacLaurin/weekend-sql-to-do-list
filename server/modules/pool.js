@@ -6,8 +6,6 @@ const config = {
     database : 'to_do_list',
     host : 'localhost',
     port : 5432,
-    user : 'postgres',
-    password : 'p3LmANHQ$p'
 };
 
 const pool = new pg.Pool(config);
