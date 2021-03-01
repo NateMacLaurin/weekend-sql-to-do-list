@@ -1,9 +1,6 @@
-# Project Name
-
-[Project Instructions](./INSTRUCTIONS.md), this line may be removed once you have updated the README.md
+# To-Do React App
+This project is a to-do app which demonstratrates full CRUD.
 
 ## Description
 
-Your project description goes here. What problem did you solve? How did you solve it?
-
-Additional README details can be found [here](https://github.com/PrimeAcademy/readme-template/blob/master/README.md).
+This app utilizes React Node Express PostgreSQL to create a to-do application with add, remote, and update features.
